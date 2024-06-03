@@ -7,15 +7,13 @@ let collectionName = "trash_JeanPierreProyect";
 
 const createTrash = async (req, res) => {
     try {
-        const data = req.body;
         const model = {
-            id: data.id,
-            isFull: data.isFull,
-            isEmpty: data.isEmpty,
-            isActived: data.isActived,
-            isDeleted: data.isDeleted,
-            createdAt: data.createdAt,
-            updatedAt: data.updatedAt
+            isFull: false,
+            isEmpty: true,
+            isActived: true,
+            isDeleted: false,
+            createdAt: Date.now(),
+            updatedAt: Date.now()
         };
         await db.collection(collectionName).add(model).then(()=>{
             res.status(201).send(model);
